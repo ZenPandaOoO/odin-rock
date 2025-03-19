@@ -15,49 +15,53 @@ function getComputerChoice() {
         }
 
 }
-console.log(getComputerChoice());
+    console.log(getComputerChoice());
 
 //Create a function named getComputerChoice
         //if value is less or equal to .33 then rock
         //if value is less then or equal to .66 then paper
         //else then scissors
 
+    let options = prompt("ROCK PAPER SCISSORS");
+    const humanChoiceLower = options.toLowerCase();
+
 function getHumanChoice() {
-    let humanChoice = prompt("ROCK PAPER SCISSORS");
-    if (humanChoice.toLowerCase() === "rock") {
+    if (humanChoiceLower === "rock") {
         return rock;
-    } else if (humanChoice.toLowerCase() === "paper") {
+    } else if (humanChoiceLower === "paper") {
         return paper;
-    } else if (humanChoice.toLowerCase() === "scissors") {
+    } else if (humanChoiceLower === "scissors") {
         return scissors;
     } else {
         return "Not an option.";
         }
 }
-console.log (getHumanChoice());
 
+    console.log (getHumanChoice());
 
-
-function playRound(getHumanChoice, getComputerChoice) {
+function playRound(humanChoice, computerChoice) {
 
     let Tie = "Its a tie. Great minds think alike.";
-    let roundWin = `You win! ${getHumanChoice} beats ${getComputerChoice}`;
-    let roundLose = `You lose. ${getComputerChoice} beats ${getHumanChoice}`;
+    let roundWin = `You win! ${getHumanChoice()} beats ${getComputerChoice()}`;
+    let roundLose = `You lose. ${getComputerChoice()} beats ${getHumanChoice()}`;
     
-    if (getHumanChoice = getComputerChoice) {
+    if (humanSelection == humanSelection) {
         return Tie;
-    } else if ((getHumanChoice == "Rock") && (getComputerChoice == "Scissors")) {
+    } else if ((humanSelection = "rock") && (getComputerChoice() = "scissors")) {
         return roundWin;  
-    } else if ((getHumanChoice == "Paper") && (getComputerChoice == "Rock")) {
+    } else if ((humanSelection = "paper") && (getComputerChoice() = "rock")) {
         return roundWin;
-    } else if ((getHumanChoice == "Scissors") && (getComputerChoice == "Paper")) {
+    } else if ((humanSelection = "scissors") && (getComputerChoice() = "paper")) {
         return roundWin;
     } else {
         return roundLose;
     }
 }
 
-console.log (playRound(getHumanChoice, getComputerChoice));
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+console.log (playRound(humanSelection, computerSelection));
 
 
 
