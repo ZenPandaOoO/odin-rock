@@ -15,7 +15,7 @@ function getComputerChoice() {
         }
 
 }
-    console.log(getComputerChoice());
+
 
 //Create a function named getComputerChoice
         //if value is less or equal to .33 then rock
@@ -26,6 +26,7 @@ function getComputerChoice() {
     const humanChoiceLower = options.toLowerCase();
 
 function getHumanChoice() {
+
     if (humanChoiceLower === "rock") {
         return rock;
     } else if (humanChoiceLower === "paper") {
@@ -33,25 +34,25 @@ function getHumanChoice() {
     } else if (humanChoiceLower === "scissors") {
         return scissors;
     } else {
-        return "Not an option.";
+        return "Mayo";
         }
 }
 
-    console.log (getHumanChoice());
+
 
 function playRound(humanChoice, computerChoice) {
 
     let Tie = "Its a tie. Great minds think alike.";
-    let roundWin = `You win! ${getHumanChoice()} beats ${getComputerChoice()}`;
-    let roundLose = `You lose. ${getComputerChoice()} beats ${getHumanChoice()}`;
+    let roundWin = `You win! ${humanSelection} beats ${computerSelection}`;
+    let roundLose = `You lose. ${computerSelection} beats ${humanSelection}`;
     
-    if (humanSelection == humanSelection) {
+    if (humanSelection === computerSelection) {
         return Tie;
-    } else if ((humanSelection = "rock") && (getComputerChoice() = "scissors")) {
+    } else if ((humanSelection == "Rock") && (computerSelection == "Scissors")) {
         return roundWin;  
-    } else if ((humanSelection = "paper") && (getComputerChoice() = "rock")) {
+    } else if ((humanSelection == "Paper") && (computerSelection == "Rock")) {
         return roundWin;
-    } else if ((humanSelection = "scissors") && (getComputerChoice() = "paper")) {
+    } else if ((humanSelection == "cissors") && (computerSelection == "Paper")) {
         return roundWin;
     } else {
         return roundLose;
@@ -61,6 +62,8 @@ function playRound(humanChoice, computerChoice) {
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
+console.log(computerSelection);
+console.log (humanSelection);
 console.log (playRound(humanSelection, computerSelection));
 
 
