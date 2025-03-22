@@ -21,6 +21,7 @@ function playerChoice() {
 }
 
 function checkWinner(ChoiceP, ChoiceC) {
+  
     let Tie = "Its a tie. Great minds think alike.";
     let roundWin = `You win! ${humanSelection} beats ${computerSelection}`;
     let roundLose = `You lose. ${computerSelection} beats ${humanSelection}`;
@@ -37,22 +38,32 @@ function checkWinner(ChoiceP, ChoiceC) {
         return roundLose;
 }
 }
+    let playerScore = 0
+    let computerScore = 0
 
 function playRound() {
-    const playerSelection = playerChoice();
-    const computerResult = getComputerChoice();
-    const winner = checkWinner(humanSelection, computerSelection);
-    //if winner = roundWin player gets +1
-    //else if winner = roundLose computer gets +1
-    //else nobody gets a point
+    let winner = checkWinner(humanSelection, computerSelection);
+    let Tie = "Its a tie. Great minds think alike.";
+    let roundWin = `You win! ${humanSelection} beats ${computerSelection}`;
+    let roundLose = `You lose. ${computerSelection} beats ${humanSelection}`;
+
+    if (winner = roundWin) {
+        playerScore++;
+    } else if (winner = roundLose) {
+        computerScore++;
+    } else {
+    return Tie;
+    }
 }
 
 const humanSelection = playerChoice();
 const computerSelection = getComputerChoice();
 
 console.log(computerSelection);
-
 console.log (checkWinner(humanSelection, computerSelection));
+console.log (playRound());
+console.log (playerScore);
+console.log (computerScore);
 
 //create new functions called playGame
 
