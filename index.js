@@ -67,24 +67,24 @@ function playerRound() {
     let playerAddPoint = 0;
     let playerCheck = scoreBoard();
     if (playerCheck == "Player point!") {
-        return playerAddPoint + 1; 
+        return ++playerAddPoint; 
     }   else {
         return playerAddPoint;
     }
 }
-let playerScore = ("Player: " + (0 + playerRound()));
+let playerScore = ("Player: " + playerRound());
 
 //adds a point to the computers score
 function computerRound() {
     let computerAddPoint = 0;
     let computerCheck = scoreBoard();
     if (computerCheck == "Computer point") {
-        return computerAddPoint + 1;
+        return ++computerAddPoint;
     }   else {
         return computerAddPoint;
     }
 }
-let computerScore = ("Computer: " + (0 + computerRound()));
+let computerScore = ("Computer: " computerRound());
 
 //determines if any of the players reached max points. Repeats if goal is not met.
 function playGame() {
@@ -95,7 +95,7 @@ function playGame() {
     } else if (playerPoint == 5) {
         return "You win!"
     } else {
-        return ("Let go another round!", playerChoice(), getComputerChoice());
+        return ("Let go another round!");
     }
 }
 
@@ -107,9 +107,12 @@ console.log (playerScore);
 console.log (computerScore);
 
 
-//Look into arithmatic in a function
+//get rid of scorboard() by having the computer and player rounds call from playRound() instead
 
-//create new functions called playGame
+//playRound() needs to be able to repeat the round
+    //put playerChoice inside playRound
 
-//Create a function named checkWinner
+//playGame() needs to be 5 rounds. Call playRound 5 times
+    //if humanScore > computerScore = human wins!
+    //else if computerRound > playerRound = computer wins!
    
