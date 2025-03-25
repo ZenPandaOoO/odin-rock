@@ -84,7 +84,7 @@ function computerRound() {
         return computerAddPoint;
     }
 }
-let computerScore = ("Computer: " computerRound());
+let computerScore = ("Computer: " + computerRound());
 
 //determines if any of the players reached max points. Repeats if goal is not met.
 function playGame() {
