@@ -24,12 +24,12 @@ function playerChoice() {
 }
 
 //compares player choice and computer choice. Determines the winner.
-function playRound(ChoiceP, ChoiceC) {
+function checkWinner(ChoiceP, ChoiceC) {
     let Tie = "Tie!";
     let roundWin = "Win!";
     let roundLose = "Lose!";
 
-        if (ChoiceP === computerSelection) {
+        if (ChoiceP === ChoiceC) {
         return Tie;
     } else if ((ChoiceP == "Rock") && (ChoiceC == "Scissors")) {
         return roundWin;  
@@ -42,77 +42,85 @@ function playRound(ChoiceP, ChoiceC) {
 }
 }
 
-//gets information from playRound. Determines who gets a point
-function scoreBoard() {
-    let Tie = "No Point.";
-    let playerWin = "Player point!";
-    let computerWin = "Computer point";
-    let winner = playRound(humanSelection, computerSelection);
-
-    if (winner == "Win!") {
-        return playerWin;
-    } else if (winner == "Lose!") {
-        return computerWin;
-    } else {
-    return Tie;
-    }    
-
-}
-
-const humanSelection = playerChoice();
-const computerSelection = getComputerChoice();
-
-//adds a point to the players score
-function playerRound() {
-    let playerAddPoint = 0;
-    let playerCheck = scoreBoard();
-    if (playerCheck == "Player point!") {
-        return ++playerAddPoint; 
-    }   else {
-        return playerAddPoint;
+//Initiates the round. Determines who gets a point
+function playRound() {
+    const humanSelection = playerChoice();
+    console.log(humanSelection);
+    const computerSelection = getComputerChoice(); 
+    console.log(computerSelection);
+    console.log(checkWinner(humanSelection, computerSelection));
+        console.log("-------------");
+    if (checkWinner(humanSelection, computerSelection) == "Tie!"){
+        return "No Point";
+    }   else if (checkWinner(humanSelection, computerSelection) == "Win!") {
+        return "Player Point!";
+    }   else if (checkWinner(humanSelection, computerSelection) == "Lose!") {
+        return "Computer Point!";
     }
 }
-let playerScore = ("Player: " + playerRound());
 
-//adds a point to the computers score
-function computerRound() {
-    let computerAddPoint = 0;
-    let computerCheck = scoreBoard();
-    if (computerCheck == "Computer point") {
-        return ++computerAddPoint;
-    }   else {
-        return computerAddPoint;
-    }
-}
-let computerScore = ("Computer: " + computerRound());
-
-//determines if any of the players reached max points. Repeats if goal is not met.
+//calls playRound and determines winner for the entire game.
 function playGame() {
-    let computerPoint = computerRound();
-    let playerPoint = playerRound();
-    if (computerPoint == 5) {
-        return "You lost!"
-    } else if (playerPoint == 5) {
-        return "You win!"
+    let playerScore = 0;
+    let computerScore = 0;
+    let roundOne = playRound();
+
+    if (roundOne == "Player Point!") {
+        ++playerScore;
+    } else if (roundOne == "Computer Point!") {
+        ++computerScore;
+    }
+
+    let roundTwo = playRound();
+
+    if (roundTwo == "Player Point!") {
+        ++playerScore;
+    } else if (roundTwo == "Computer Point!") {
+        ++computerScore;
+    }
+
+    let roundThree = playRound();
+
+    if (roundThree == "Player Point!") {
+        ++playerScore;
+    } else if (roundThree == "Computer Point!") {
+        ++computerScore;
+    }
+
+    let roundFour = playRound();
+
+    if (roundFour == "Player Point!") {
+        ++playerScore;
+    } else if (roundFour == "Computer Point!") {
+        ++computerScore;
+    }
+
+    let roundFive = playRound();
+
+    if (roundFive == "Player Point!") {
+        ++playerScore;
+    } else if (roundFive == "Computer Point!") {
+        ++computerScore;
+    }
+
+    console.log("Player: " + playerScore);
+    console.log("Computer: " + computerScore);
+
+    if (playerScore > computerScore) {
+        return "Congratulations!";
+    } else if (computerScore > playerScore) {
+        return "You lost! Try again!";
     } else {
-        return ("Let go another round!");
+        return "It's a draw!!!";
     }
 }
 
-console.log (computerSelection);
-console.log (playRound(humanSelection, computerSelection));
 console.log (playGame());
-console.log (scoreBoard());
-console.log (playerScore);
-console.log (computerScore);
+//function and variable tests
+//console.log (computerSelection);
+//console.log (playRound());
+//console.log ("Player: " + playerScore);
+//console.log ("Computer: " + computerScore);
 
-
-//get rid of scorboard() by having the computer and player rounds call from playRound() instead
-
-//playRound() needs to be able to repeat the round
-    //put playerChoice inside playRound
-
-//playGame() needs to be 5 rounds. Call playRound 5 times
-    //if humanScore > computerScore = human wins!
-    //else if computerRound > playerRound = computer wins!
    
+    //Try seperating the scores with the playGame function and creating a variable for playGame to return which would determine who gets a point
