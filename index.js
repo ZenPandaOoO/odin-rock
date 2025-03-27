@@ -45,9 +45,9 @@ function checkWinner(ChoiceP, ChoiceC) {
 //Initiates the round. Determines who gets a point
 function playRound() {
     const humanSelection = playerChoice();
-    console.log(humanSelection);
+    console.log("Player: " + humanSelection);
     const computerSelection = getComputerChoice(); 
-    console.log(computerSelection);
+    console.log("Computer: " + computerSelection);
     console.log(checkWinner(humanSelection, computerSelection));
         console.log("-------------");
     if (checkWinner(humanSelection, computerSelection) == "Tie!"){
@@ -63,8 +63,8 @@ function playRound() {
 function playGame() {
     let playerScore = 0;
     let computerScore = 0;
-    let roundOne = playRound();
 
+    let roundOne = playRound();
     if (roundOne == "Player Point!") {
         ++playerScore;
     } else if (roundOne == "Computer Point!") {
@@ -72,7 +72,6 @@ function playGame() {
     }
 
     let roundTwo = playRound();
-
     if (roundTwo == "Player Point!") {
         ++playerScore;
     } else if (roundTwo == "Computer Point!") {
@@ -80,7 +79,6 @@ function playGame() {
     }
 
     let roundThree = playRound();
-
     if (roundThree == "Player Point!") {
         ++playerScore;
     } else if (roundThree == "Computer Point!") {
@@ -88,7 +86,6 @@ function playGame() {
     }
 
     let roundFour = playRound();
-
     if (roundFour == "Player Point!") {
         ++playerScore;
     } else if (roundFour == "Computer Point!") {
@@ -96,7 +93,6 @@ function playGame() {
     }
 
     let roundFive = playRound();
-
     if (roundFive == "Player Point!") {
         ++playerScore;
     } else if (roundFive == "Computer Point!") {
@@ -121,6 +117,3 @@ console.log (playGame());
 //console.log (playRound());
 //console.log ("Player: " + playerScore);
 //console.log ("Computer: " + computerScore);
-
-   
-    //Try seperating the scores with the playGame function and creating a variable for playGame to return which would determine who gets a point
