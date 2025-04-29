@@ -64,40 +64,6 @@ function playGame() {
     let playerScore = 0;
     let computerScore = 0;
 
-    let roundOne = playRound();
-    if (roundOne == "Player Point!") {
-        ++playerScore;
-    } else if (roundOne == "Computer Point!") {
-        ++computerScore;
-    }
-
-    let roundTwo = playRound();
-    if (roundTwo == "Player Point!") {
-        ++playerScore;
-    } else if (roundTwo == "Computer Point!") {
-        ++computerScore;
-    }
-
-    let roundThree = playRound();
-    if (roundThree == "Player Point!") {
-        ++playerScore;
-    } else if (roundThree == "Computer Point!") {
-        ++computerScore;
-    }
-
-    let roundFour = playRound();
-    if (roundFour == "Player Point!") {
-        ++playerScore;
-    } else if (roundFour == "Computer Point!") {
-        ++computerScore;
-    }
-
-    let roundFive = playRound();
-    if (roundFive == "Player Point!") {
-        ++playerScore;
-    } else if (roundFive == "Computer Point!") {
-        ++computerScore;
-    }
 
     console.log("Player: " + playerScore);
     console.log("Computer: " + computerScore);
@@ -112,7 +78,18 @@ function playGame() {
 }
 
 console.log (playGame());
-//function and variable tests
+
+//ODIN ASSIGNMENT//
+//remove logic that plays 5 rounds
+//create three buttons -- one for each selection
+    //add event listener to the buttons that call playRound w/ the correct playerSelection when button is clicked
+        //remember to console.log for this step
+//add a div for displaying results and change all console.logs into DOM methods
+//display the running score and announce a winner ONCE ONE PLAYER REACHES 5 POINTS
+
+
+
+//FUNCTION AND VARIABLE TESTS//
 //console.log (computerSelection);
 //console.log (playRound());
 //console.log ("Player: " + playerScore);
