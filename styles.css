@@ -1,0 +1,55 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#playerSection {
+    display: flex;
+    margin: 40px;
+    max-width: 500px;
+    justify-content: center;
+}
+
+#playerSelections {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+}
+
+.rock   {
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 12px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: slategray;
+}
+
+.paper {
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 12px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-left: 40px;
+    padding-right: 50px;
+    background-color: white;
+}
+
+.scissors {
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: gray;
+    margin: 12px;
+    padding: 30px;
+}
+
+#computerSection {
+    margin: 40px;
+    display: flex;
+    margin: 40px;
+}

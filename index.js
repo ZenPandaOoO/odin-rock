@@ -76,8 +76,29 @@ function playGame() {
         return "It's a draw!!!";
     }
 }
+//css for the header
+const header = document.querySelector("#head");
+const headContent = document.createElement("div");
+headContent.classList.add("headContent");
+headContent.textContent = "Rock Paper Scissors -- WAR";
+headContent.setAttribute("style", "color: red; background: black; text-align: center; font-weight: bold; font-size: 50px; padding: 24px; margin-top: 75px;");
+header.appendChild(headContent);
 
-console.log (playGame());
+//css for the hero section
+const playerSection = document.querySelector("#playerSection");
+const playerContent = document.createElement("div");
+playerContent.classList.add("playerContent");
+playerContent.textContent = "HERO";
+playerContent.setAttribute("style", "color: gold; border: solid 8px; border-color: gold; font-size: 40px; padding: 24px; text-align: center;");
+playerSection.appendChild(playerContent);
+
+//css for the villain section
+const computerSection = document.querySelector("#computerSection");
+const computerContent = document.createElement("div")
+computerContent.classList.add("computerContent");
+computerContent.textContent = "VILLAIN";
+computerContent.setAttribute("style", "color: purple; background-color: black; border: solid 8px; border-color: purple; font-size: 40px; padding: 20px; text-align: center;");
+computerSection.appendChild(computerContent);
 
 //ODIN ASSIGNMENT//
 //remove logic that plays 5 rounds
