@@ -9,15 +9,16 @@
     margin: 40px;
     max-width: 500px;
     justify-content: center;
+    flex-direction: row-reverse;
 }
 
 #playerSelections {
     display: flex;
     justify-content: space-between;
-    margin: 24px;
+    margin: 18px;
 }
 
-.rock   {
+#rock   {
     border-radius: 10px;
     font-size: 24px;
     font-weight: bold;
@@ -27,7 +28,7 @@
     background-color: slategray;
 }
 
-.paper {
+#paper {
     border-radius: 10px;
     font-size: 24px;
     font-weight: bold;
@@ -39,7 +40,7 @@
     background-color: white;
 }
 
-.scissors {
+#scissors {
     border-radius: 10px;
     font-size: 24px;
     font-weight: bold;
@@ -51,5 +52,6 @@
 #computerSection {
     margin: 40px;
     display: flex;
-    margin: 40px;
+    margin: 18px;
+    flex-direction: row-reverse;
 }
