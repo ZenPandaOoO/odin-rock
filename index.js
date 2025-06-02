@@ -16,20 +16,6 @@ function getComputerChoice() {
 
 }
 
-let playerChoice
-
-//buttons
-const rockButton = document.querySelector("#rock");
-rockButton.addEventListener("click", () => {
-    let playerChoice = "Rock"
-});
-
-//prompt for player choice. Returns as first letter capitalized.
-
-
-
-
-    
 //compares player choice and computer choice. Determines the winner.
 function checkWinner(ChoiceP, ChoiceC) {
     let Tie = "Tie!";
@@ -49,14 +35,51 @@ function checkWinner(ChoiceP, ChoiceC) {
 }
 }
 
-//Initiates the round. Determines who gets a point
+//buttons
+    const rockButton = document.querySelector("#rock");
+    const paperButton = document.querySelector("#paper");
+    const scissorsButton = document.querySelector("#scissors");
+
+    const buttonStart = document.querySelector("#playerSelections");
+    buttonStart.addEventListener("click", playRound);
+
+
+let playerChoice = "";
+rockButton.addEventListener("click", () => {
+    playerChoice = "Rock";
+});
+paperButton.addEventListener("click", () => {
+    playerChoice = "Paper";
+});
+scissorsButton.addEventListener("click", () => {
+    playerChoice = "Scissors";
+});
+
+//create two seperate functions for playerScore and computerScore. Possibly use loops to determine if it is < 5 points
+
+//create a checkLoser function
+
 function playRound() {
-    const humanSelection = playerChoice();
-    console.log("Player: " + humanSelection);
+    let playerScore = 0;
+    let computerScore = 0;
+    const humanSelection = playerChoice;
     const computerSelection = getComputerChoice(); 
+
+    if (checkWinner(humanSelection, computerSelection) == "Win!"){
+        playerScore++;
+    }   else if (checkWinner(humanSelection, computerSelection) == "Lose!") {
+        computerScore++;
+    }
+
+
+
+    console.log("Player: " + humanSelection);
     console.log("Computer: " + computerSelection);
+    console.log("Player Score: " + playerScore);
+    console.log("Computer Score: " + computerScore);
     console.log(checkWinner(humanSelection, computerSelection));
-        console.log("-------------");
+    console.log("-------------");
+    
     if (checkWinner(humanSelection, computerSelection) == "Tie!"){
         return "No Point";
     }   else if (checkWinner(humanSelection, computerSelection) == "Win!") {
@@ -68,9 +91,9 @@ function playRound() {
 
 //calls playRound and determines winner for the entire game.
 function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
 
+//create a loop to call playRound until someone reaches 5
+    
 
     console.log("Player: " + playerScore);
     console.log("Computer: " + computerScore);
@@ -83,6 +106,8 @@ function playGame() {
         return "It's a draw!!!";
     }
 }
+
+
 //css for the header
 const header = document.querySelector("#head");
 const headContent = document.createElement("div");
@@ -137,8 +162,3 @@ computerSection.appendChild(computerScore);
 
 
 
-//FUNCTION AND VARIABLE TESTS//
-//console.log (computerSelection);
-//console.log (playRound());
-//console.log ("Player: " + playerScore);
-//console.log ("Computer: " + computerScore);
