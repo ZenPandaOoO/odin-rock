@@ -55,3 +55,15 @@
     margin: 18px;
     flex-direction: row-reverse;
 }
+
+#playAgainButton {
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 12px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-left: 40px;
+    padding-right: 50px;
+    background-color: white;
+}

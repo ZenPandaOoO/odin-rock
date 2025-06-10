@@ -35,6 +35,7 @@ function checkWinner(ChoiceP, ChoiceC) {
 }
 }
 
+//create a checkLoser function
 //buttons
     const rockButton = document.querySelector("#rock");
     const paperButton = document.querySelector("#paper");
@@ -42,7 +43,6 @@ function checkWinner(ChoiceP, ChoiceC) {
 
     const buttonStart = document.querySelector("#playerSelections");
     buttonStart.addEventListener("click", playRound);
-
 
 let playerChoice = "";
 rockButton.addEventListener("click", () => {
@@ -55,58 +55,73 @@ scissorsButton.addEventListener("click", () => {
     playerChoice = "Scissors";
 });
 
-//create two seperate functions for playerScore and computerScore. Possibly use loops to determine if it is < 5 points
-
-//create a checkLoser function
+//plays a round and determinds who gets a point
+let playerScoreValue = 0;
+let computerScoreValue = 0;
 
 function playRound() {
-    let playerScore = 0;
-    let computerScore = 0;
     const humanSelection = playerChoice;
     const computerSelection = getComputerChoice(); 
 
     if (checkWinner(humanSelection, computerSelection) == "Win!"){
-        playerScore++;
-    }   else if (checkWinner(humanSelection, computerSelection) == "Lose!") {
-        computerScore++;
+        playerScoreValue++;
+    } else if (checkWinner(humanSelection, computerSelection) == "Lose!") {
+        computerScoreValue++;
     }
 
+    computerChoiceDisplay(computerSelection);
+    playerChoiceDisplay(humanSelection);
+    playGame();
 
+    playerScoreDisplay.textContent = playerScoreValue;
+    computerScoreDisplay.textContent = computerScoreValue;
 
-    console.log("Player: " + humanSelection);
-    console.log("Computer: " + computerSelection);
-    console.log("Player Score: " + playerScore);
-    console.log("Computer Score: " + computerScore);
-    console.log(checkWinner(humanSelection, computerSelection));
-    console.log("-------------");
-    
-    if (checkWinner(humanSelection, computerSelection) == "Tie!"){
-        return "No Point";
-    }   else if (checkWinner(humanSelection, computerSelection) == "Win!") {
-        return "Player Point!";
-    }   else if (checkWinner(humanSelection, computerSelection) == "Lose!") {
-        return "Computer Point!";
+}
+
+//css for the Hero choice
+const playerRock = document.createElement("div");
+const playerPaper = document.createElement("div");
+const playerScissors = document.createElement("div");
+function playerChoiceDisplay(choice) {
+    if (choice === "Rock") {
+        playerContent.textContent = "Rock";
+    } else if (choice === "Paper") {
+        playerContent.textContent = "Paper";
+    } else if (choice === "Scissors") {
+        playerContent.textContent = "Scissors";
+    }
+}
+//css for the villain choice
+const computerRock = document.createElement("div");
+const computerPaper = document.createElement("div");
+const computerScissors = document.createElement("div");
+function computerChoiceDisplay(choice) {
+    if (choice === "Rock") {
+        computerContent.textContent = "Rock";
+    } else if (choice === "Scissors") {
+        computerContent.textContent = "Scissors";
+    } else if (choice === "Paper") {
+        computerContent.textContent = "Paper";
     }
 }
 
 //calls playRound and determines winner for the entire game.
 function playGame() {
-
-//create a loop to call playRound until someone reaches 5
     
-
-    console.log("Player: " + playerScore);
-    console.log("Computer: " + computerScore);
-
-    if (playerScore > computerScore) {
-        return "Congratulations!";
-    } else if (computerScore > playerScore) {
-        return "You lost! Try again!";
-    } else {
-        return "It's a draw!!!";
+    if (computerScoreValue >= 5 || playerScoreValue >= 5) {
+        rockButton.remove();
+        paperButton.remove();
+        scissorsButton.remove();
+        playerSelections.appendChild(playAgain);
+         if (playerScoreValue > computerScoreValue) {
+            playerContent.textContent = "The Hero prevailed!";
+            computerContent.textContent = "Defeated";
+        } else if (computerScoreValue > playerScoreValue) {
+           playerContent.textContent = "Defeated"
+           computerContent.textContent = "The Villain has triumphed!";
+        }
+    }       
     }
-}
-
 
 //css for the header
 const header = document.querySelector("#head");
@@ -125,13 +140,42 @@ playerContent.setAttribute("style", "color: gold; border: solid 8px; border-colo
 playerSection.appendChild(playerContent);
 
 //create a new div class for hero score inside of div id playerSection
-const playerScore = document.createElement("div");
-playerScore.textContent = "0";
-playerScore.setAttribute("style", "color: gold; border: solid 8px; margin-right: 12px; border-color: gold; font-size: 40px; padding: 24px; text-align: center;");
-playerSection.appendChild(playerScore);
+const playerScoreDisplay = document.createElement("div");
+playerScoreDisplay.textContent = "0";
+playerScoreDisplay.setAttribute("style", "color: gold; border: solid 8px; margin-right: 12px; border-color: gold; font-size: 40px; padding: 24px; text-align: center;");
+playerSection.appendChild(playerScoreDisplay);
 
-//create a new div class for hero choice
+//create a function that adds a playAgain button and resets game
+    const playerSelections = document.querySelector("#playerSelections");
+    const playAgain = document.createElement("button"); 
+    playAgain.setAttribute("style", "border-radius: 10px; font-size: 24px; font-weight: bold; margin: 12px; margin-left: 100px; margin-right: 100px; background-color: white;")
+    playAgain.textContent = "Play Again?";
+    playAgain.addEventListener("click", resetGame);
 
+function resetGame() {
+    if (computerScoreValue >= 5 || playerScoreValue >= 5) {
+  
+    playerScoreValue = 0;
+    computerScoreValue = 0;
+    computerScoreDisplay.textContent = "0";
+    playerScoreDisplay.textContent = "0";
+
+    playerContent.textContent = "HERO";
+    computerContent.textContent = "VILLAIN";
+
+    if (!document.querySelector("#rock")) {
+        playerSelections.appendChild(rockButton);
+    }
+    if (!document.querySelector("#paper")) {
+        playerSelections.appendChild(paperButton);
+    }
+    if (!document.querySelector("#scissors")) {
+        playerSelections.appendChild(scissorsButton);
+    }
+
+    playAgain.remove();
+}
+}
 //css for the villain section
 const computerSection = document.querySelector("#computerSection");
 const computerContent = document.createElement("div")
@@ -140,25 +184,17 @@ computerContent.textContent = "VILLAIN";
 computerContent.setAttribute("style", "color: purple; background-color: black; border: solid 8px; border-color: purple; font-size: 40px; padding: 20px; text-align: center;");
 computerSection.appendChild(computerContent);
 
+
 //create a new div class for villain score inside of div id villain section
-const computerScore = document.createElement("div");
-computerScore.textContent = "0";
-computerScore.setAttribute("style", "color: purple; margin-right: 12px; background-color: black; border: solid 8px; border-color: purple; font-size: 40px; padding: 20px; text-align: center;");
-computerSection.appendChild(computerScore);
+const computerScoreDisplay = document.createElement("div");
+computerScoreDisplay.textContent = "0";
+computerScoreDisplay.setAttribute("style", "color: purple; margin-right: 12px; background-color: black; border: solid 8px; border-color: purple; font-size: 40px; padding: 20px; text-align: center;");
+computerSection.appendChild(computerScoreDisplay);
 
 
-//create a new div class for villain choice
-
-//create a new div class for winner
-
-
-//ODIN ASSIGNMENT//
-//remove logic that plays 5 rounds
-//create three buttons -- one for each selection
-    //add event listener to the buttons that call playRound w/ the correct playerSelection when button is clicked
-        //remember to console.log for this step
-//add a div for displaying results and change all console.logs into DOM methods
-//display the running score and announce a winner ONCE ONE PLAYER REACHES 5 POINTS
+//TO DO
+//Debug the computer choice display
+//Move playAgain outside of playerSelections (to avoid it calling playRound)
 
 
 
