@@ -35,7 +35,6 @@ function checkWinner(ChoiceP, ChoiceC) {
 }
 }
 
-//create a checkLoser function
 //buttons
     const rockButton = document.querySelector("#rock");
     const paperButton = document.querySelector("#paper");
@@ -91,6 +90,7 @@ function playerChoiceDisplay(choice) {
         playerContent.textContent = "Scissors";
     }
 }
+
 //css for the villain choice
 const computerRock = document.createElement("div");
 const computerPaper = document.createElement("div");
@@ -107,12 +107,11 @@ function computerChoiceDisplay(choice) {
 
 //calls playRound and determines winner for the entire game.
 function playGame() {
-    
     if (computerScoreValue >= 5 || playerScoreValue >= 5) {
         rockButton.remove();
         paperButton.remove();
         scissorsButton.remove();
-        playerSelections.appendChild(playAgain);
+        playAgainButton.appendChild(playAgain);
          if (playerScoreValue > computerScoreValue) {
             playerContent.textContent = "The Hero prevailed!";
             computerContent.textContent = "Defeated";
@@ -121,7 +120,7 @@ function playGame() {
            computerContent.textContent = "The Villain has triumphed!";
         }
     }       
-    }
+}
 
 //css for the header
 const header = document.querySelector("#head");
@@ -146,7 +145,7 @@ playerScoreDisplay.setAttribute("style", "color: gold; border: solid 8px; margin
 playerSection.appendChild(playerScoreDisplay);
 
 //create a function that adds a playAgain button and resets game
-    const playerSelections = document.querySelector("#playerSelections");
+    const playAgainButton = document.querySelector("#playAgainButton");
     const playAgain = document.createElement("button"); 
     playAgain.setAttribute("style", "border-radius: 10px; font-size: 24px; font-weight: bold; margin: 12px; margin-left: 100px; margin-right: 100px; background-color: white;")
     playAgain.textContent = "Play Again?";
@@ -176,6 +175,7 @@ function resetGame() {
     playAgain.remove();
 }
 }
+
 //css for the villain section
 const computerSection = document.querySelector("#computerSection");
 const computerContent = document.createElement("div")
